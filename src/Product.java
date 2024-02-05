@@ -5,7 +5,7 @@
  */
 public class Product {
 
-    private String productName = "";    // max length = 20 characters, default value is "".
+    private String productName = "d";    // max length = 20 characters, default value is "".
                                     // When constructor is called, if the name is >20 chars, you should
                                     // only store the first 20 characters (Hint: use substr())
 
