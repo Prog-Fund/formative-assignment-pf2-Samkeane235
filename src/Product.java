@@ -5,7 +5,7 @@
  */
 public class Product {
 
-    private String productName = "d";    // max length = 20 characters, default value is "".
+    private String productName = "";    // max length = 20 characters, default value is "".
                                     // When constructor is called, if the name is >20 chars, you should
                                     // only store the first 20 characters (Hint: use substr())
 
@@ -21,7 +21,12 @@ public class Product {
      * @param unitCost Unit cost of the product - valid values are any positive number
      */
     public Product(String productName, int productCode, double unitCost, boolean inCurrentProductLine) {
-       setProductName(productName);
+        if (productName != null){
+            if (productName.length() <= 20)
+                this.productName = productName;
+            else
+                this.productName = productName.substring(0,20);
+        }
        setProductCode(productCode);
        setUnitCost(unitCost);
        setInCurrentProductLine(inCurrentProductLine);
@@ -74,10 +79,11 @@ public class Product {
      * @param productName The new Product Name
      */
     public void setProductName(String productName) {
-        if (productName.length() <= 20)
-            this.productName = productName;
-        else this.productName = productName.substring(0,20);
-
+        if (productName != null){
+            if (productName.length() <= 20) {
+                this.productName = productName;
+            }
+        }
     }
     /**
      * Updates the Unit Cost to the value passed as a parameter
@@ -107,7 +113,7 @@ public class Product {
         return "Product description: " + productName
                 + ", product code: " + productCode
                 + ", unit cost: " + unitCost
-                + ", currently in product line: " + inCurrentProductLine;
+                + ", currently in product line: " + (inCurrentProductLine ? 'Y' : 'N');
     }
 
 }
